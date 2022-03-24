@@ -1,0 +1,54 @@
+﻿@model Proyectofinal1.Models.CITA
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CITA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha_cita)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_cita)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MASCOTA.Nombre_mascota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MASCOTA.Nombre_mascota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIPO_CITA.Tipo_cita1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIPO_CITA.Tipo_cita1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_cita }) |
+    <div>
+        @Html.ActionLink("Regresar", "indexMascota", "MASCOTA", new { id = Session["ID_usuario"] }, null)
+    </div>
+
+</p>

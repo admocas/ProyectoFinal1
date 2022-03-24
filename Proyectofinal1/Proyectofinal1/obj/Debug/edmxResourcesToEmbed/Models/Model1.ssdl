@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PETIPUASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ANIMAL">
+    <Key>
+      <PropertyRef Name="ID_ANIMAL" />
+    </Key>
+    <Property Name="ID_ANIMAL" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Animal" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CATEGORIA">
+    <Key>
+      <PropertyRef Name="ID_categoria" />
+    </Key>
+    <Property Name="ID_categoria" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Categoria" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CITA">
+    <Key>
+      <PropertyRef Name="ID_cita" />
+    </Key>
+    <Property Name="ID_cita" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_mascota" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fecha_cita" Type="date" Nullable="false" />
+    <Property Name="Observaciones" Type="nvarchar" MaxLength="100" />
+    <Property Name="ID_tipo_cita" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MASCOTA">
+    <Key>
+      <PropertyRef Name="ID_mascota" />
+    </Key>
+    <Property Name="ID_mascota" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nombre_mascota" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Edad" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_animal" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_usuario" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORDEN">
+    <Key>
+      <PropertyRef Name="ID_orden" />
+    </Key>
+    <Property Name="ID_orden" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fecha_orden" Type="date" Nullable="false" />
+    <Property Name="ID_usuario" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_producto" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Total" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_producto" />
+    </Key>
+    <Property Name="ID_producto" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_categoria" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Producto" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Foto_producto" Type="image" Nullable="false" />
+    <Property Name="Cantidad" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Precio" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="ID_provincia" />
+    </Key>
+    <Property Name="ID_provincia" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Provincia" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TIPO_CITA">
+    <Key>
+      <PropertyRef Name="ID_tipo_cita" />
+    </Key>
+    <Property Name="ID_tipo_cita" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Tipo_cita" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_usuario" />
+    </Key>
+    <Property Name="ID_usuario" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Primer_apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Segundo_apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Nombre_usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Edad" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Sexo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ID_provincia" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CITA_MASCOTA">
+    <End Role="MASCOTA" Type="Self.MASCOTA" Multiplicity="1" />
+    <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MASCOTA">
+        <PropertyRef Name="ID_mascota" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_mascota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_TIPO_CITA">
+    <End Role="TIPO_CITA" Type="Self.TIPO_CITA" Multiplicity="1" />
+    <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CITA">
+        <PropertyRef Name="ID_tipo_cita" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_tipo_cita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MASCOTA_ANIMAL">
+    <End Role="ANIMAL" Type="Self.ANIMAL" Multiplicity="1" />
+    <End Role="MASCOTA" Type="Self.MASCOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANIMAL">
+        <PropertyRef Name="ID_ANIMAL" />
+      </Principal>
+      <Dependent Role="MASCOTA">
+        <PropertyRef Name="ID_animal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MASCOTA_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="MASCOTA" Type="Self.MASCOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_usuario" />
+      </Principal>
+      <Dependent Role="MASCOTA">
+        <PropertyRef Name="ID_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDEN_PRODUCTO">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_producto" />
+      </Principal>
+      <Dependent Role="ORDEN">
+        <PropertyRef Name="ID_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDEN_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_usuario" />
+      </Principal>
+      <Dependent Role="ORDEN">
+        <PropertyRef Name="ID_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTO_CATEGORIA">
+    <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIA">
+        <PropertyRef Name="ID_categoria" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="ID_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PROVINCIA">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="ID_provincia" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ID_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="SP_AgregarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NOMBRES" Type="varchar" Mode="In" />
+    <Parameter Name="APELLIDOS" Type="varchar" Mode="In" />
+    <Parameter Name="FECHANACIMIENTO" Type="date" Mode="In" />
+    <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+    <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
+    <Parameter Name="PATRON" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USUARIO" Type="varchar" Mode="In" />
+    <Parameter Name="CONTRASENIA" Type="varchar" Mode="In" />
+    <Parameter Name="PATRON" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="PETIPUASModelStoreContainer">
+    <EntitySet Name="ANIMAL" EntityType="Self.ANIMAL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CITA" EntityType="Self.CITA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MASCOTA" EntityType="Self.MASCOTA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ORDEN" EntityType="Self.ORDEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_CITA" EntityType="Self.TIPO_CITA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CITA_MASCOTA" Association="Self.FK_CITA_MASCOTA">
+      <End Role="MASCOTA" EntitySet="MASCOTA" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_TIPO_CITA" Association="Self.FK_CITA_TIPO_CITA">
+      <End Role="TIPO_CITA" EntitySet="TIPO_CITA" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MASCOTA_ANIMAL" Association="Self.FK_MASCOTA_ANIMAL">
+      <End Role="ANIMAL" EntitySet="ANIMAL" />
+      <End Role="MASCOTA" EntitySet="MASCOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MASCOTA_USUARIO" Association="Self.FK_MASCOTA_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="MASCOTA" EntitySet="MASCOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDEN_PRODUCTO" Association="Self.FK_ORDEN_PRODUCTO">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="ORDEN" EntitySet="ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDEN_USUARIO" Association="Self.FK_ORDEN_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ORDEN" EntitySet="ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTO_CATEGORIA" Association="Self.FK_PRODUCTO_CATEGORIA">
+      <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PROVINCIA" Association="Self.FK_USUARIO_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

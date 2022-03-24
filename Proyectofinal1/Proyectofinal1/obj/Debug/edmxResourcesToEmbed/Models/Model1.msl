@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PETIPUASModelStoreContainer" CdmEntityContainer="PETIPUASEntities1">
+    <EntitySetMapping Name="ANIMAL">
+      <EntityTypeMapping TypeName="PETIPUASModel.ANIMAL">
+        <MappingFragment StoreEntitySet="ANIMAL">
+          <ScalarProperty Name="ID_ANIMAL" ColumnName="ID_ANIMAL" />
+          <ScalarProperty Name="Animal1" ColumnName="Animal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CATEGORIA">
+      <EntityTypeMapping TypeName="PETIPUASModel.CATEGORIA">
+        <MappingFragment StoreEntitySet="CATEGORIA">
+          <ScalarProperty Name="ID_categoria" ColumnName="ID_categoria" />
+          <ScalarProperty Name="Categoria1" ColumnName="Categoria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CITA">
+      <EntityTypeMapping TypeName="PETIPUASModel.CITA">
+        <MappingFragment StoreEntitySet="CITA">
+          <ScalarProperty Name="ID_cita" ColumnName="ID_cita" />
+          <ScalarProperty Name="ID_mascota" ColumnName="ID_mascota" />
+          <ScalarProperty Name="Fecha_cita" ColumnName="Fecha_cita" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="ID_tipo_cita" ColumnName="ID_tipo_cita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MASCOTA">
+      <EntityTypeMapping TypeName="PETIPUASModel.MASCOTA">
+        <MappingFragment StoreEntitySet="MASCOTA">
+          <ScalarProperty Name="ID_mascota" ColumnName="ID_mascota" />
+          <ScalarProperty Name="Nombre_mascota" ColumnName="Nombre_mascota" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="ID_animal" ColumnName="ID_animal" />
+          <ScalarProperty Name="ID_usuario" ColumnName="ID_usuario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ORDEN">
+      <EntityTypeMapping TypeName="PETIPUASModel.ORDEN">
+        <MappingFragment StoreEntitySet="ORDEN">
+          <ScalarProperty Name="ID_orden" ColumnName="ID_orden" />
+          <ScalarProperty Name="Fecha_orden" ColumnName="Fecha_orden" />
+          <ScalarProperty Name="ID_usuario" ColumnName="ID_usuario" />
+          <ScalarProperty Name="ID_producto" ColumnName="ID_producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PRODUCTO">
+      <EntityTypeMapping TypeName="PETIPUASModel.PRODUCTO">
+        <MappingFragment StoreEntitySet="PRODUCTO">
+          <ScalarProperty Name="ID_producto" ColumnName="ID_producto" />
+          <ScalarProperty Name="ID_categoria" ColumnName="ID_categoria" />
+          <ScalarProperty Name="Producto1" ColumnName="Producto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Foto_producto" ColumnName="Foto_producto" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVINCIA">
+      <EntityTypeMapping TypeName="PETIPUASModel.PROVINCIA">
+        <MappingFragment StoreEntitySet="PROVINCIA">
+          <ScalarProperty Name="ID_provincia" ColumnName="ID_provincia" />
+          <ScalarProperty Name="Provincia1" ColumnName="Provincia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PETIPUASModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_CITA">
+      <EntityTypeMapping TypeName="PETIPUASModel.TIPO_CITA">
+        <MappingFragment StoreEntitySet="TIPO_CITA">
+          <ScalarProperty Name="ID_tipo_cita" ColumnName="ID_tipo_cita" />
+          <ScalarProperty Name="Tipo_cita1" ColumnName="Tipo_cita" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="PETIPUASModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="ID_usuario" ColumnName="ID_usuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Primer_apellido" ColumnName="Primer_apellido" />
+          <ScalarProperty Name="Segundo_apellido" ColumnName="Segundo_apellido" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Nombre_usuario" ColumnName="Nombre_usuario" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="ID_provincia" ColumnName="ID_provincia" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_AgregarUsuario" FunctionName="PETIPUASModel.Store.SP_AgregarUsuario" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="PETIPUASModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="PETIPUASModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="PETIPUASModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="PETIPUASModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PETIPUASModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="PETIPUASModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="PETIPUASModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="PETIPUASModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="PETIPUASModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="SP_ValidarUsuario" FunctionName="PETIPUASModel.Store.SP_ValidarUsuario" />
+  </EntityContainerMapping>
+</Mapping>

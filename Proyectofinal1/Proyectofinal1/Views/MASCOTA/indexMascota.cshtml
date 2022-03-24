@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Proyectofinal1.Models.MASCOTA>
+
+@{
+    ViewBag.Title = "indexMascota";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar nueva mascota", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre_mascota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Edad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ANIMAL.Animal1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.USUARIO.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_mascota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ANIMAL.Animal1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.USUARIO.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID_mascota }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID_mascota }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.ID_mascota }) |
+            @Html.ActionLink("Agendar cita", "Create", "CITA") |
+            @Html.ActionLink("Ver Cita", "indexCita", "CITA", new { id = item.ID_mascota}, null)
+          
+        </td>
+    </tr>
+}
+
+</table>

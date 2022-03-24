@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PETIPUASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ANIMAL">
+    <Key>
+      <PropertyRef Name="ID_ANIMAL" />
+    </Key>
+    <Property Name="ID_ANIMAL" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Animal1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MASCOTA" Relationship="Self.FK_MASCOTA_ANIMAL" FromRole="ANIMAL" ToRole="MASCOTA" />
+  </EntityType>
+  <EntityType Name="CATEGORIA">
+    <Key>
+      <PropertyRef Name="ID_categoria" />
+    </Key>
+    <Property Name="ID_categoria" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Categoria1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_PRODUCTO_CATEGORIA" FromRole="CATEGORIA" ToRole="PRODUCTO" />
+  </EntityType>
+  <EntityType Name="CITA">
+    <Key>
+      <PropertyRef Name="ID_cita" />
+    </Key>
+    <Property Name="ID_cita" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_mascota" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fecha_cita" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Observaciones" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ID_tipo_cita" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="MASCOTA" Relationship="Self.FK_CITA_MASCOTA" FromRole="CITA" ToRole="MASCOTA" />
+    <NavigationProperty Name="TIPO_CITA" Relationship="Self.FK_CITA_TIPO_CITA" FromRole="CITA" ToRole="TIPO_CITA" />
+  </EntityType>
+  <EntityType Name="MASCOTA">
+    <Key>
+      <PropertyRef Name="ID_mascota" />
+    </Key>
+    <Property Name="ID_mascota" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nombre_mascota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Edad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_animal" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_usuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="ANIMAL" Relationship="Self.FK_MASCOTA_ANIMAL" FromRole="MASCOTA" ToRole="ANIMAL" />
+    <NavigationProperty Name="CITA" Relationship="Self.FK_CITA_MASCOTA" FromRole="MASCOTA" ToRole="CITA" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_MASCOTA_USUARIO" FromRole="MASCOTA" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="ORDEN">
+    <Key>
+      <PropertyRef Name="ID_orden" />
+    </Key>
+    <Property Name="ID_orden" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Fecha_orden" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ID_usuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_producto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Total" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="PRODUCTO" Relationship="Self.FK_ORDEN_PRODUCTO" FromRole="ORDEN" ToRole="PRODUCTO" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_ORDEN_USUARIO" FromRole="ORDEN" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="PRODUCTO">
+    <Key>
+      <PropertyRef Name="ID_producto" />
+    </Key>
+    <Property Name="ID_producto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ID_categoria" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Producto1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Foto_producto" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+    <Property Name="Cantidad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="CATEGORIA" Relationship="Self.FK_PRODUCTO_CATEGORIA" FromRole="PRODUCTO" ToRole="CATEGORIA" />
+    <NavigationProperty Name="ORDEN" Relationship="Self.FK_ORDEN_PRODUCTO" FromRole="PRODUCTO" ToRole="ORDEN" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="ID_provincia" />
+    </Key>
+    <Property Name="ID_provincia" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Provincia1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="USUARIO" Relationship="Self.FK_USUARIO_PROVINCIA" FromRole="PROVINCIA" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TIPO_CITA">
+    <Key>
+      <PropertyRef Name="ID_tipo_cita" />
+    </Key>
+    <Property Name="ID_tipo_cita" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Tipo_cita1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CITA" Relationship="Self.FK_CITA_TIPO_CITA" FromRole="TIPO_CITA" ToRole="CITA" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="ID_usuario" />
+    </Key>
+    <Property Name="ID_usuario" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Primer_apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Segundo_apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Nombre_usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Edad" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID_provincia" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MASCOTA" Relationship="Self.FK_MASCOTA_USUARIO" FromRole="USUARIO" ToRole="MASCOTA" />
+    <NavigationProperty Name="ORDEN" Relationship="Self.FK_ORDEN_USUARIO" FromRole="USUARIO" ToRole="ORDEN" />
+    <NavigationProperty Name="PROVINCIA" Relationship="Self.FK_USUARIO_PROVINCIA" FromRole="USUARIO" ToRole="PROVINCIA" />
+  </EntityType>
+  <Association Name="FK_MASCOTA_ANIMAL">
+    <End Role="ANIMAL" Type="Self.ANIMAL" Multiplicity="1" />
+    <End Role="MASCOTA" Type="Self.MASCOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANIMAL">
+        <PropertyRef Name="ID_ANIMAL" />
+      </Principal>
+      <Dependent Role="MASCOTA">
+        <PropertyRef Name="ID_animal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PRODUCTO_CATEGORIA">
+    <End Role="CATEGORIA" Type="Self.CATEGORIA" Multiplicity="1" />
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CATEGORIA">
+        <PropertyRef Name="ID_categoria" />
+      </Principal>
+      <Dependent Role="PRODUCTO">
+        <PropertyRef Name="ID_categoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_MASCOTA">
+    <End Role="MASCOTA" Type="Self.MASCOTA" Multiplicity="1" />
+    <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MASCOTA">
+        <PropertyRef Name="ID_mascota" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_mascota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CITA_TIPO_CITA">
+    <End Role="TIPO_CITA" Type="Self.TIPO_CITA" Multiplicity="1" />
+    <End Role="CITA" Type="Self.CITA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CITA">
+        <PropertyRef Name="ID_tipo_cita" />
+      </Principal>
+      <Dependent Role="CITA">
+        <PropertyRef Name="ID_tipo_cita" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MASCOTA_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="MASCOTA" Type="Self.MASCOTA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_usuario" />
+      </Principal>
+      <Dependent Role="MASCOTA">
+        <PropertyRef Name="ID_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDEN_PRODUCTO">
+    <End Role="PRODUCTO" Type="Self.PRODUCTO" Multiplicity="1" />
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PRODUCTO">
+        <PropertyRef Name="ID_producto" />
+      </Principal>
+      <Dependent Role="ORDEN">
+        <PropertyRef Name="ID_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ORDEN_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="ORDEN" Type="Self.ORDEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="ID_usuario" />
+      </Principal>
+      <Dependent Role="ORDEN">
+        <PropertyRef Name="ID_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_USUARIO_PROVINCIA">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="ID_provincia" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="ID_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PETIPUASEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ANIMAL" EntityType="Self.ANIMAL" />
+    <EntitySet Name="CATEGORIA" EntityType="Self.CATEGORIA" />
+    <EntitySet Name="CITA" EntityType="Self.CITA" />
+    <EntitySet Name="MASCOTA" EntityType="Self.MASCOTA" />
+    <EntitySet Name="ORDEN" EntityType="Self.ORDEN" />
+    <EntitySet Name="PRODUCTO" EntityType="Self.PRODUCTO" />
+    <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TIPO_CITA" EntityType="Self.TIPO_CITA" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" />
+    <AssociationSet Name="FK_MASCOTA_ANIMAL" Association="Self.FK_MASCOTA_ANIMAL">
+      <End Role="ANIMAL" EntitySet="ANIMAL" />
+      <End Role="MASCOTA" EntitySet="MASCOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PRODUCTO_CATEGORIA" Association="Self.FK_PRODUCTO_CATEGORIA">
+      <End Role="CATEGORIA" EntitySet="CATEGORIA" />
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_MASCOTA" Association="Self.FK_CITA_MASCOTA">
+      <End Role="MASCOTA" EntitySet="MASCOTA" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CITA_TIPO_CITA" Association="Self.FK_CITA_TIPO_CITA">
+      <End Role="TIPO_CITA" EntitySet="TIPO_CITA" />
+      <End Role="CITA" EntitySet="CITA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MASCOTA_USUARIO" Association="Self.FK_MASCOTA_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="MASCOTA" EntitySet="MASCOTA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDEN_PRODUCTO" Association="Self.FK_ORDEN_PRODUCTO">
+      <End Role="PRODUCTO" EntitySet="PRODUCTO" />
+      <End Role="ORDEN" EntitySet="ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ORDEN_USUARIO" Association="Self.FK_ORDEN_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="ORDEN" EntitySet="ORDEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_USUARIO_PROVINCIA" Association="Self.FK_USUARIO_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <FunctionImport Name="SP_AgregarUsuario">
+      <Parameter Name="NOMBRES" Mode="In" Type="String" />
+      <Parameter Name="APELLIDOS" Mode="In" Type="String" />
+      <Parameter Name="FECHANACIMIENTO" Mode="In" Type="DateTime" />
+      <Parameter Name="USUARIO" Mode="In" Type="String" />
+      <Parameter Name="CONTRASENIA" Mode="In" Type="String" />
+      <Parameter Name="PATRON" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(PETIPUASModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(PETIPUASModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="SP_ValidarUsuario">
+      <Parameter Name="USUARIO" Mode="In" Type="String" />
+      <Parameter Name="CONTRASENIA" Mode="In" Type="String" />
+      <Parameter Name="PATRON" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

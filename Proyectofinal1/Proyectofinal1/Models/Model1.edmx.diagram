@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="08ebaf599a5a469893d552f6aa5fd9ae" Name="Diagram1">
+        <EntityTypeShape EntityType="PETIPUASModel.ANIMAL" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.CATEGORIA" Width="1.5" PointX="3.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.CITA" Width="1.5" PointX="10.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.MASCOTA" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.ORDEN" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.PRODUCTO" Width="1.5" PointX="6" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.PROVINCIA" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.TIPO_CITA" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PETIPUASModel.USUARIO" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="PETIPUASModel.FK_MASCOTA_ANIMAL" ManuallyRouted="false" />
+        <AssociationConnector Association="PETIPUASModel.FK_PRODUCTO_CATEGORIA" ManuallyRouted="false" />
+        <AssociationConnector Association="PETIPUASModel.FK_CITA_MASCOTA" ManuallyRouted="false" />
+        <AssociationConnector Association="PETIPUASModel.FK_CITA_TIPO_CITA" ManuallyRouted="false" />
+        <AssociationConnector Association="PETIPUASModel.FK_MASCOTA_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PETIPUASModel.FK_ORDEN_PRODUCTO" ManuallyRouted="false" />
+        <AssociationConnector Association="PETIPUASModel.FK_ORDEN_USUARIO" ManuallyRouted="false" />
+        <AssociationConnector Association="PETIPUASModel.FK_USUARIO_PROVINCIA" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

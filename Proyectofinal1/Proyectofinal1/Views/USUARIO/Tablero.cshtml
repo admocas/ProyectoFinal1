@@ -1,0 +1,29 @@
+﻿@model Proyectofinal1.Models.USUARIO
+
+@{
+    ViewBag.Title = "Tablero";
+    Layout = "~/Views/Shared/_LayoutUsuario.cshtml";
+}
+
+<h2>Tablero</h2>
+
+
+<fieldset>
+    <legend>
+        Tablero de usuario
+    </legend>
+
+    @if (Session["Nombre_usuario"] != null)
+    {
+        <p>BIENVENIDO @Session["Nombre_usuario"].ToString().ToUpper()</p>
+
+    }
+
+    <div>
+
+        @using (Html.BeginForm("Logout", "USUARIO", FormMethod.Post))
+        {
+            <a href="javascript:;" onclick="document.forms[0].submit();">Logout</a>
+        }
+    </div>
+</fieldset>
